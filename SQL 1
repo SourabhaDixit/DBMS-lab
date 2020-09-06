@@ -1,0 +1,38 @@
+select * from test;
+
+Results
+**Schema (MySQL v5.7)**
+
+    create table test(usn integer primary key, name varchar(20), phone_no integer, branch varchar(50));
+    insert into test values(101,'raksha',74884,'CS');
+    insert into test values(102,'sourabha',6456,'IS');
+    insert into test values(103,'praveen',7475,'CV');
+    insert into test values(104,'swasthik',97684,'ME');
+    insert into test values(105,'kousthubha',783784,'CS');                                                                                     
+    
+
+---
+
+**Query #1**
+
+    select * from test;
+
+| usn | name       | phone_no | branch |
+| --- | ---------- | -------- | ------ |
+| 101 | raksha     | 74884    | CS     |
+| 102 | sourabha   | 6456     | IS     |
+| 103 | praveen    | 7475     | CV     |
+| 104 | swasthik   | 97684    | ME     |
+| 105 | kousthubha | 783784   | CS     |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/)
+Copy as Markdown
+Query #1 Execution time: 0ms
+usn	name	phone_no	branch
+101	raksha	74884	CS
+102	sourabha	6456	IS
+103	praveen	7475	CV
+104	swasthik	97684	ME
+105	kousthubha  78377	CS
