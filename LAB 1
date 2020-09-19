@@ -1,49 +1,15 @@
 Schema SQL
 
-create table BOOK(Book_id integer primary key,Title varchar(50),Publisher_Name varchar(50),pub_Year varchar(30));
-insert into BOOK values(01,'DBMS','Sumitha','1998');
-insert into BOOK values(02,'ME','Shakuntala','1989');
-insert into BOOK values(03,'SE','Venkatesh','1956'); 
-insert into BOOK values(04,'ATC','Sanketh','1879'); 
-insert into BOOK values(0insert into BOOK values(01,'DBMS','Sumitha','1998');5,'ADP','Sumath','1854');
-insert into BOOK values(06,'DBMS','shakthi','1789');   
+create table PUBLISHER(Name varchar(10),Address varchar(40),Phone integer, primary key(Name));
+                                                                                       
+create table BOOK(Book_id integer, title varchar(20), Publisher_Name varchar(30),Pub_Year integer(10), primary key(Book_id), foreign key (Publisher_Name) references PUBLISHER(Name));
 
-​
+create table BOOK_AUTHORS(Book_id integer,Author_Name varchar(20),primary key(Book_id), foreign key(Book_id) references BOOK(Book_id));
+                                                                                                                             
+create table LIBRARY_BRANCH(Branch_id varchar(10),Branch_Name varchar (20),Address varchar(30),primary key(Branch_id);
+                            
+create table BOOK_COPIES(Book_id integer,Branch_id integer,No_of_Copies integer , primary key(Book_id,Branch_id),foreign key (Book_id)references BOOK(Book_id));   
 
-create table BOOK_COPIES(Book_id integer,Branch_id integer,No_of_Copies integer, primary key(Book_id,Branch_id));    
-                                                                                                        
-Text to DDL
-Query SQL
-1
-select * from BOOK where Book_id=04 
+create table BOOK_LENDING(Book_id integer,Branch_id integer,Card_No integer,Due_Date integer, Date_Out integer,primary key(Book_id,Branch_id,Card_No) foreign key(Book_id) references BOOK(Book_id ), foreign 
 
-Results
-**Schema (MySQL v5.7)**
-
-    create table BOOK(Book_id integer primary key,Title varchar(50),Publisher_Name varchar(50),pub_Year varchar(30));
-    insert into BOOK values(01,'DBMS','Sumitha','1998');
-    insert into BOOK values(02,'ME','Shakuntala','1989');
-    insert into BOOK values(03,'SE','Venkatesh','1956'); 
-    insert into BOOK values(04,'ATC','Sanketh','1879'); 
-    insert into BOOK values(05,'ADP','Sumath','1854');
-    insert into BOOK values(06,'DBMS','shakthi','1789');   
-    
-    create table BOOK_COPIES(Book_id integer,Branch_id integer,No_of_Copies integer, primary key(Book_id,Branch_id));                                                                                                            
-
----
-
-**Query #1**
-
-    select * from BOOK where Book_id=04;
-
-| Book_id | Title | Publisher_Name | pub_Year |
-| ------- | ----- | -------------- | -------- |
-| 4       | ATC   | Sanketh        | 1879     |
-
----
-
-Query #1 Execution time: 0ms
-
-Book_id	Title	Publisher_Name	pub_Year
-4	ATC	Sanketh	1879
-
+key(Branch_id) references  LIBRARY_BRANCH(Branch_id));
