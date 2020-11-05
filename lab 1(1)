@@ -1,3 +1,5 @@
+lab 1: SQL
+
     create table PUBLISHER(Name varchar(20), Address varchar(30), Phone long, primary key (Name));
                                                                                            
     create table BOOK(Book_id integer, Title varchar(20), Publisher_Name varchar(20), Pub_Year integer, primary key(Book_id), foreign key(Publisher_Name) references PUBLISHER(Name) on delete cascade);
